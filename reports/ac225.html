@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ac-225 daughter ingrowth after an ideal separation | Batch timing study</title>
+<style>
+body { margin: 0 auto; max-width: 1080px; padding: 32px 20px; color: #182a31;
+font: 17px/1.55 system-ui, sans-serif; background: #fafbf9; }
+h1 { font-size: 2.3rem; line-height: 1.15; } h2 { margin-top: 2.3rem; }
+.notice { border-left: 4px solid #985600; padding: 12px 18px; background: #fff4d9; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; background: white; }
+th,td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #d8e0df; }
+th { background: #e9efed; } td { font-variant-numeric: tabular-nums; }
+.scroll { overflow-x: auto; } pre { white-space: pre-wrap; overflow-wrap: anywhere;
+background: #edf1ef; padding: 20px; font-size: .85rem; } .hash { overflow-wrap: anywhere; }
+a { color: #075f6b; } @media print { body { max-width: none; padding: 0; } }
+</style></head><body><main>
+<p>Reproducible batch timing study</p><h1>Ac-225 daughter ingrowth after an ideal separation</h1>
+<p class="notice">Educational model only, not for dose or production decisions.</p>
+<p>Activity is the rate of radioactive decays. A half-life is the time for half a nuclide to decay.
+Calibration is the planned time at which the batch must meet its parent activity target.</p>
+<h2>Timing and risk</h2><div class="scroll"><table><thead><tr><th scope="col">Measure</th><th scope="col">Result</th></tr></thead><tbody><tr><td>Nominal assessment activity</td><td>9.590 MBq</td></tr><tr><td>Parent activity target</td><td>9.000 MBq</td></tr><tr><td>Nominal target and deadline met</td><td>True</td></tr><tr><td>Latest nominal start</td><td>2026-01-15T09:00:00+00:00</td></tr><tr><td>Nominal completion</td><td>2026-01-15T11:00:00+00:00</td></tr><tr><td>Planned calibration</td><td>2026-01-15T12:00:00+00:00</td></tr><tr><td>Actual nominal assessment</td><td>2026-01-15T12:00:00+00:00</td></tr><tr><td>Nominal deadline slack</td><td>60.00 min</td></tr><tr><td>Activity expiry with specified retention</td><td>2026-01-16T09:47:42.274995+00:00</td></tr><tr><td>Monte Carlo trials / seed</td><td>20000 / 2026</td></tr><tr><td>Missed activity target or deadline</td><td>0.99% (198 trials)</td></tr><tr><td>Missed deadline</td><td>0.99%</td></tr><tr><td>Activity shortfall</td><td>0.00%</td></tr><tr><td>Wilson 95% sampling interval for combined miss probability</td><td>0.86% to 1.14%</td></tr><tr><td>95th percentile total process duration</td><td>220.17 min</td></tr><tr><td>Latest start allowing that sampled duration</td><td>2026-01-15T08:19:49.772416+00:00</td></tr><tr><td>5th percentile assessed parent activity</td><td>9.590 MBq</td></tr></tbody></table></div>
+<p>The sampled start allowance addresses deadline risk only. Check activity feasibility separately;
+it is not a guarantee or a validated production recommendation.</p>
+<h2>Activity at each step</h2><div class="scroll"><table><thead><tr><th scope="col">Step</th><th scope="col">UTC time</th><th scope="col">Retained fraction</th><th scope="col">Ac-225 (MBq)</th><th scope="col">Fr-221 (MBq)</th><th scope="col">At-217 (MBq)</th><th scope="col">Bi-213 (MBq)</th><th scope="col">Po-213 (MBq)</th><th scope="col">Tl-209 (MBq)</th><th scope="col">Pb-209 (MBq)</th><th scope="col">Bi-209 (MBq)</th></tr></thead><tbody><tr><td>Activity reference</td><td>2026-01-15T08:00:00+00:00</td><td>1</td><td>10</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Process start</td><td>2026-01-15T08:00:00+00:00</td><td>1</td><td>10</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Preparation</td><td>2026-01-15T08:30:00+00:00</td><td>0.98</td><td>9.78574</td><td>9.66011</td><td>9.65961</td><td>2.87036</td><td>2.80928</td><td>0.0540021</td><td>0.13086</td><td>7.65715e-26</td></tr><tr><td>Hold for daughter ingrowth</td><td>2026-01-15T10:30:00+00:00</td><td>1</td><td>9.72892</td><td>9.73219</td><td>9.73171</td><td>8.63812</td><td>8.4543</td><td>0.18266</td><td>2.44792</td><td>9.3538e-24</td></tr><tr><td>Quality check</td><td>2026-01-15T11:00:00+00:00</td><td>0.99</td><td>9.61762</td><td>9.62085</td><td>9.62037</td><td>8.94515</td><td>8.75479</td><td>0.189637</td><td>3.06785</td><td>1.46653e-23</td></tr><tr><td>Activity assessment</td><td>2026-01-15T12:00:00+00:00</td><td>1</td><td>9.58966</td><td>9.59288</td><td>9.5924</td><td>9.33907</td><td>9.14033</td><td>0.198466</td><td>4.24671</td><td>2.91084e-23</td></tr></tbody></table></div>
+<h2>Assumptions</h2><p>Activity is referenced to a fixed clock time. Moving the process start does not reset decay. The target is the selected parent activity, not total daughter activity. A trial misses if it finishes after calibration or its parent activity is below target. Late trials are assessed at completion; other trials are assessed at planned calibration. Step times are independent lognormal samples with the supplied means and standard deviations. Each retention fraction removes the same fraction of every nuclide at the step end. Example timings, retentions and activities are invented study inputs, not measured process data. Only public decay data are used. Half-life, retention and measurement uncertainties are not sampled.</p>
+<h2>Inputs</h2><pre>{
+  &quot;title&quot;: &quot;Ac-225 daughter ingrowth after an ideal separation&quot;,
+  &quot;parent&quot;: &quot;Ac-225&quot;,
+  &quot;reference_time&quot;: &quot;2026-01-15T08:00:00Z&quot;,
+  &quot;start_time&quot;: &quot;2026-01-15T08:00:00Z&quot;,
+  &quot;calibration_time&quot;: &quot;2026-01-15T12:00:00Z&quot;,
+  &quot;initial_activities&quot;: {
+    &quot;Ac-225&quot;: &quot;10 MBq&quot;
+  },
+  &quot;target_activity&quot;: &quot;9 MBq&quot;,
+  &quot;steps&quot;: [
+    {
+      &quot;name&quot;: &quot;Preparation&quot;,
+      &quot;mean_duration&quot;: &quot;30 min&quot;,
+      &quot;std_duration&quot;: &quot;5 min&quot;,
+      &quot;retention&quot;: 0.98
+    },
+    {
+      &quot;name&quot;: &quot;Hold for daughter ingrowth&quot;,
+      &quot;mean_duration&quot;: &quot;120 min&quot;,
+      &quot;std_duration&quot;: &quot;20 min&quot;,
+      &quot;retention&quot;: 1
+    },
+    {
+      &quot;name&quot;: &quot;Quality check&quot;,
+      &quot;mean_duration&quot;: &quot;30 min&quot;,
+      &quot;std_duration&quot;: &quot;10 min&quot;,
+      &quot;retention&quot;: 0.99
+    }
+  ]
+}</pre>
+<h2>Decay data provenance</h2><p><a href="https://www.nndc.bnl.gov/nudat3/data/output.json">NNDC NuDat chart JSON</a>,
+retrieved 2026-11-05T06:33:11.415702+00:00.</p><p class="hash">Full downloaded source SHA-256:
+63464fb0ae7b52fc7a24a57bc8f305e9e3e141e71790f8a3175c5edb5b04ad0f.</p>
+<p>The README cites every tracked nuclide. Rare omitted branches leave the tracked network.
+This file is self-contained and needs no connection or installed software to read.</p>
+</main></body></html>

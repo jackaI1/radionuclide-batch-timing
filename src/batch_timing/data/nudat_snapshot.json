@@ -1,0 +1,425 @@
+{
+  "source": "https://www.nndc.bnl.gov/nudat3/data/output.json",
+  "retrieved_utc": "2026-11-05T06:33:11.415702+00:00",
+  "source_sha256": "63464fb0ae7b52fc7a24a57bc8f305e9e3e141e71790f8a3175c5edb5b04ad0f",
+  "ground_states": {
+    "18F": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 109.734,
+        "unit": "m",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.008
+        },
+        "inSeconds": {
+          "value": 6584.04,
+          "uncertainty": 0.48
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "EC+B+",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "68Ga": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 67.843,
+        "unit": "m",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.017
+        },
+        "inSeconds": {
+          "value": 4070.5800000000004,
+          "uncertainty": 1.02
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "EC+B+",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "64Cu": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 12.7007,
+        "unit": "h",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.0013
+        },
+        "inSeconds": {
+          "value": 45722.52,
+          "uncertainty": 4.68
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 38.5,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.3
+            }
+          },
+          {
+            "mode": "EC+B+",
+            "value": 61.5,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.3
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "177Lu": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 6.6472,
+        "unit": "d",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.0016
+        },
+        "inSeconds": {
+          "value": 574318.08,
+          "uncertainty": 138.24
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 100,
+            "uncertainty": {
+              "type": "unreported"
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "225Ac": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 9.919,
+        "unit": "d",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.0021
+        },
+        "inSeconds": {
+          "value": 857001.6000000001,
+          "uncertainty": 181.44
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "14C",
+            "value": 5.3e-10,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 1.3e-10
+            }
+          },
+          {
+            "mode": "a",
+            "value": 100,
+            "uncertainty": {
+              "type": "unreported"
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "221Fr": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 4.801,
+        "unit": "m",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.009
+        },
+        "inSeconds": {
+          "value": 288.06,
+          "uncertainty": 0.5399999999999999
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "14C",
+            "value": 8.8e-11,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 1.1e-11
+            }
+          },
+          {
+            "mode": "a",
+            "value": 99.995,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.003
+            }
+          },
+          {
+            "mode": "B-",
+            "value": 0.005,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.003
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "217At": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 32.6,
+        "unit": "ms",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.2
+        },
+        "inSeconds": {
+          "value": 0.032600000000000004,
+          "uncertainty": 0.0002
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 0.007,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.003
+            }
+          },
+          {
+            "mode": "a",
+            "value": 99.993,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.003
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "213Bi": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 45.607,
+        "unit": "m",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.038
+        },
+        "inSeconds": {
+          "value": 2736.42,
+          "uncertainty": 2.28
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 97.872,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.022
+            }
+          },
+          {
+            "mode": "a",
+            "value": 2.128,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0.022
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "213Po": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 3.706,
+        "unit": "us",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.001
+        },
+        "inSeconds": {
+          "value": 3.7059999999999998e-06,
+          "uncertainty": 1e-09
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "a",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "209Tl": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 2.162,
+        "unit": "m",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.007
+        },
+        "inSeconds": {
+          "value": 129.72,
+          "uncertainty": 0.42
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "209Pb": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 3.235,
+        "unit": "h",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 0.005
+        },
+        "inSeconds": {
+          "value": 11646.0,
+          "uncertainty": 18.0
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "B-",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    },
+    "209Bi": {
+      "energy": {
+        "value": 0.0,
+        "unit": "keV"
+      },
+      "halflife": {
+        "value": 20100000000000000000,
+        "unit": "y",
+        "uncertainty": {
+          "type": "symmetric",
+          "value": 800000000000000000
+        },
+        "inSeconds": {
+          "value": 6.3430776e+26,
+          "uncertainty": 2.524608e+25
+        }
+      },
+      "decayModes": {
+        "observed": [
+          {
+            "mode": "a",
+            "value": 100,
+            "uncertainty": {
+              "type": "symmetric",
+              "value": 0
+            }
+          }
+        ],
+        "predicted": []
+      }
+    }
+  }
+}

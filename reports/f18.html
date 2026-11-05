@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F-18 timing margin | Batch timing study</title>
+<style>
+body { margin: 0 auto; max-width: 1080px; padding: 32px 20px; color: #182a31;
+font: 17px/1.55 system-ui, sans-serif; background: #fafbf9; }
+h1 { font-size: 2.3rem; line-height: 1.15; } h2 { margin-top: 2.3rem; }
+.notice { border-left: 4px solid #985600; padding: 12px 18px; background: #fff4d9; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; background: white; }
+th,td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #d8e0df; }
+th { background: #e9efed; } td { font-variant-numeric: tabular-nums; }
+.scroll { overflow-x: auto; } pre { white-space: pre-wrap; overflow-wrap: anywhere;
+background: #edf1ef; padding: 20px; font-size: .85rem; } .hash { overflow-wrap: anywhere; }
+a { color: #075f6b; } @media print { body { max-width: none; padding: 0; } }
+</style></head><body><main>
+<p>Reproducible batch timing study</p><h1>F-18 timing margin</h1>
+<p class="notice">Educational model only, not for dose or production decisions.</p>
+<p>Activity is the rate of radioactive decays. A half-life is the time for half a nuclide to decay.
+Calibration is the planned time at which the batch must meet its parent activity target.</p>
+<h2>Timing and risk</h2><div class="scroll"><table><thead><tr><th scope="col">Measure</th><th scope="col">Result</th></tr></thead><tbody><tr><td>Nominal assessment activity</td><td>431.909 MBq</td></tr><tr><td>Parent activity target</td><td>430.000 MBq</td></tr><tr><td>Nominal target and deadline met</td><td>True</td></tr><tr><td>Latest nominal start</td><td>2026-01-15T08:40:00+00:00</td></tr><tr><td>Nominal completion</td><td>2026-01-15T09:50:00+00:00</td></tr><tr><td>Planned calibration</td><td>2026-01-15T10:00:00+00:00</td></tr><tr><td>Actual nominal assessment</td><td>2026-01-15T10:00:00+00:00</td></tr><tr><td>Nominal deadline slack</td><td>10.00 min</td></tr><tr><td>Activity expiry with specified retention</td><td>2026-01-15T10:00:42.081471+00:00</td></tr><tr><td>Monte Carlo trials / seed</td><td>20000 / 2026</td></tr><tr><td>Missed activity target or deadline</td><td>18.86% (3771 trials)</td></tr><tr><td>Missed deadline</td><td>18.86%</td></tr><tr><td>Activity shortfall</td><td>17.56%</td></tr><tr><td>Wilson 95% sampling interval for combined miss probability</td><td>18.32% to 19.40%</td></tr><tr><td>95th percentile total process duration</td><td>100.69 min</td></tr><tr><td>Latest start allowing that sampled duration</td><td>2026-01-15T08:19:18.421892+00:00</td></tr><tr><td>5th percentile assessed parent activity</td><td>403.700 MBq</td></tr></tbody></table></div>
+<p>The sampled start allowance addresses deadline risk only. Check activity feasibility separately;
+it is not a guarantee or a validated production recommendation.</p>
+<h2>Activity at each step</h2><div class="scroll"><table><thead><tr><th scope="col">Step</th><th scope="col">UTC time</th><th scope="col">Retained fraction</th><th scope="col">F-18 (MBq)</th></tr></thead><tbody><tr><td>Activity reference</td><td>2026-01-15T08:00:00+00:00</td><td>1</td><td>1000</td></tr><tr><td>Process start</td><td>2026-01-15T08:30:00+00:00</td><td>1</td><td>827.374</td></tr><tr><td>Preparation</td><td>2026-01-15T09:05:00+00:00</td><td>0.95</td><td>630.102</td></tr><tr><td>Transfer</td><td>2026-01-15T09:25:00+00:00</td><td>0.98</td><td>544.217</td></tr><tr><td>Quality check</td><td>2026-01-15T09:50:00+00:00</td><td>0.99</td><td>460.071</td></tr><tr><td>Activity assessment</td><td>2026-01-15T10:00:00+00:00</td><td>1</td><td>431.909</td></tr></tbody></table></div>
+<h2>Assumptions</h2><p>Activity is referenced to a fixed clock time. Moving the process start does not reset decay. The target is the selected parent activity, not total daughter activity. A trial misses if it finishes after calibration or its parent activity is below target. Late trials are assessed at completion; other trials are assessed at planned calibration. Step times are independent lognormal samples with the supplied means and standard deviations. Each retention fraction removes the same fraction of every nuclide at the step end. Example timings, retentions and activities are invented study inputs, not measured process data. Only public decay data are used. Half-life, retention and measurement uncertainties are not sampled.</p>
+<h2>Inputs</h2><pre>{
+  &quot;title&quot;: &quot;F-18 timing margin&quot;,
+  &quot;parent&quot;: &quot;F-18&quot;,
+  &quot;reference_time&quot;: &quot;2026-01-15T08:00:00Z&quot;,
+  &quot;start_time&quot;: &quot;2026-01-15T08:30:00Z&quot;,
+  &quot;calibration_time&quot;: &quot;2026-01-15T10:00:00Z&quot;,
+  &quot;initial_activities&quot;: {
+    &quot;F-18&quot;: &quot;1000 MBq&quot;
+  },
+  &quot;target_activity&quot;: &quot;430 MBq&quot;,
+  &quot;steps&quot;: [
+    {
+      &quot;name&quot;: &quot;Preparation&quot;,
+      &quot;mean_duration&quot;: &quot;35 min&quot;,
+      &quot;std_duration&quot;: &quot;8 min&quot;,
+      &quot;retention&quot;: 0.95
+    },
+    {
+      &quot;name&quot;: &quot;Transfer&quot;,
+      &quot;mean_duration&quot;: &quot;20 min&quot;,
+      &quot;std_duration&quot;: &quot;5 min&quot;,
+      &quot;retention&quot;: 0.98
+    },
+    {
+      &quot;name&quot;: &quot;Quality check&quot;,
+      &quot;mean_duration&quot;: &quot;25 min&quot;,
+      &quot;std_duration&quot;: &quot;7 min&quot;,
+      &quot;retention&quot;: 0.99
+    }
+  ]
+}</pre>
+<h2>Decay data provenance</h2><p><a href="https://www.nndc.bnl.gov/nudat3/data/output.json">NNDC NuDat chart JSON</a>,
+retrieved 2026-11-05T06:33:11.415702+00:00.</p><p class="hash">Full downloaded source SHA-256:
+63464fb0ae7b52fc7a24a57bc8f305e9e3e141e71790f8a3175c5edb5b04ad0f.</p>
+<p>The README cites every tracked nuclide. Rare omitted branches leave the tracked network.
+This file is self-contained and needs no connection or installed software to read.</p>
+</main></body></html>

@@ -1,0 +1,173 @@
+{
+  "model": {
+    "educational_only": true,
+    "disclaimer": "Educational model only, not for dose or production decisions.",
+    "assumptions": "Activity is referenced to a fixed clock time. Moving the process start does not reset decay. The target is the selected parent activity, not total daughter activity. A trial misses if it finishes after calibration or its parent activity is below target. Late trials are assessed at completion; other trials are assessed at planned calibration. Step times are independent lognormal samples with the supplied means and standard deviations. Each retention fraction removes the same fraction of every nuclide at the step end. Example timings, retentions and activities are invented study inputs, not measured process data. Only public decay data are used. Half-life, retention and measurement uncertainties are not sampled.",
+    "solver": "Bateman matrix exponential, 50 decimal digits"
+  },
+  "data_provenance": {
+    "source": "https://www.nndc.bnl.gov/nudat3/data/output.json",
+    "retrieved_utc": "2026-11-05T06:33:11.415702+00:00",
+    "source_sha256": "63464fb0ae7b52fc7a24a57bc8f305e9e3e141e71790f8a3175c5edb5b04ad0f"
+  },
+  "scenario": {
+    "title": "Ac-225 daughter ingrowth after an ideal separation",
+    "parent": "Ac-225",
+    "reference_time": "2026-01-15T08:00:00Z",
+    "start_time": "2026-01-15T08:00:00Z",
+    "calibration_time": "2026-01-15T12:00:00Z",
+    "initial_activities": {
+      "Ac-225": "10 MBq"
+    },
+    "target_activity": "9 MBq",
+    "steps": [
+      {
+        "name": "Preparation",
+        "mean_duration": "30 min",
+        "std_duration": "5 min",
+        "retention": 0.98
+      },
+      {
+        "name": "Hold for daughter ingrowth",
+        "mean_duration": "120 min",
+        "std_duration": "20 min",
+        "retention": 1
+      },
+      {
+        "name": "Quality check",
+        "mean_duration": "30 min",
+        "std_duration": "10 min",
+        "retention": 0.99
+      }
+    ]
+  },
+  "result": {
+    "title": "Ac-225 daughter ingrowth after an ideal separation",
+    "parent": "Ac-225",
+    "reference_time": "2026-01-15T08:00:00+00:00",
+    "start_time": "2026-01-15T08:00:00+00:00",
+    "planned_calibration_time": "2026-01-15T12:00:00+00:00",
+    "completion_time": "2026-01-15T11:00:00+00:00",
+    "assessment_time": "2026-01-15T12:00:00+00:00",
+    "latest_start": "2026-01-15T09:00:00+00:00",
+    "schedule_possible_from_reference": true,
+    "activity_expiry_time": "2026-01-16T09:47:42.274995+00:00",
+    "nominal_duration_minutes": 180.0,
+    "deadline_slack_minutes": 60.0,
+    "target_activity_mbq": 9.0,
+    "planned_calibration_activity_mbq": 9.589658304,
+    "assessment_activity_mbq": 9.589658304,
+    "activity_target_met": true,
+    "deadline_met": true,
+    "feasible": true,
+    "timeline": [
+      {
+        "step": "Activity reference",
+        "time": "2026-01-15T08:00:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "Ac-225": 10.0,
+          "Fr-221": 0.0,
+          "At-217": 0.0,
+          "Bi-213": 0.0,
+          "Po-213": 0.0,
+          "Tl-209": 0.0,
+          "Pb-209": 0.0,
+          "Bi-209": 0.0
+        }
+      },
+      {
+        "step": "Process start",
+        "time": "2026-01-15T08:00:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "Ac-225": 10.0,
+          "Fr-221": 0.0,
+          "At-217": 0.0,
+          "Bi-213": 0.0,
+          "Po-213": 0.0,
+          "Tl-209": 0.0,
+          "Pb-209": 0.0,
+          "Bi-209": 0.0
+        }
+      },
+      {
+        "step": "Preparation",
+        "time": "2026-01-15T08:30:00+00:00",
+        "retention": 0.98,
+        "activities_mbq": {
+          "Ac-225": 9.78574306,
+          "Fr-221": 9.660111565,
+          "At-217": 9.65961434,
+          "Bi-213": 2.870362076,
+          "Po-213": 2.809280762,
+          "Tl-209": 0.05400205571,
+          "Pb-209": 0.1308595265,
+          "Bi-209": 7.657153974e-26
+        }
+      },
+      {
+        "step": "Hold for daughter ingrowth",
+        "time": "2026-01-15T10:30:00+00:00",
+        "retention": 1,
+        "activities_mbq": {
+          "Ac-225": 9.728922408,
+          "Fr-221": 9.732193642,
+          "At-217": 9.731707402,
+          "Bi-213": 8.638116893,
+          "Po-213": 8.454297764,
+          "Tl-209": 0.182660199,
+          "Pb-209": 2.447918833,
+          "Bi-209": 9.353804212e-24
+        }
+      },
+      {
+        "step": "Quality check",
+        "time": "2026-01-15T11:00:00+00:00",
+        "retention": 0.99,
+        "activities_mbq": {
+          "Ac-225": 9.617621183,
+          "Fr-221": 9.620854996,
+          "At-217": 9.62037432,
+          "Bi-213": 8.945145413,
+          "Po-213": 8.754792718,
+          "Tl-209": 0.1896368118,
+          "Pb-209": 3.067847608,
+          "Bi-209": 1.46652971e-23
+        }
+      },
+      {
+        "step": "Activity assessment",
+        "time": "2026-01-15T12:00:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "Ac-225": 9.589658304,
+          "Fr-221": 9.592882715,
+          "At-217": 9.592403436,
+          "Bi-213": 9.33906598,
+          "Po-213": 9.140330655,
+          "Tl-209": 0.1984662183,
+          "Pb-209": 4.246705829,
+          "Bi-209": 2.910837075e-23
+        }
+      }
+    ]
+  },
+  "monte_carlo": {
+    "samples": 20000,
+    "seed": 2026,
+    "distribution": "independent lognormal step durations",
+    "misses": 198,
+    "probability_miss": 0.0099,
+    "probability_deadline_miss": 0.0099,
+    "probability_activity_shortfall": 0.0,
+    "wilson_95_interval": [
+      0.008618910164,
+      0.01136932358
+    ],
+    "total_duration_p50_minutes": 178.3612546,
+    "total_duration_p95_minutes": 220.1704597,
+    "latest_start_for_p95_duration": "2026-01-15T08:19:49.772416+00:00",
+    "assessment_activity_p05_mbq": 9.589658304
+  }
+}

@@ -109,3 +109,9 @@ def test_activity_rejects_dimensionless_and_stable_initial_inventory():
         net.activities({"S": quantity("1 MBq")}, quantity("1 s"))
     with pytest.raises((TypeError, ValueError)):
         load_network("F-18").activities({"F-18": quantity("1 kg")}, quantity("1 s"))
+
+
+@pytest.mark.parametrize("text", ["1 (s", "1 / 0 s", "1 ** s", "1 @ s", "1 unknownunit"])
+def test_malformed_quantity_expressions_become_validation_errors(text):
+    with pytest.raises(ValueError, match="Invalid quantity"):
+        quantity(text)

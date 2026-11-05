@@ -1,6 +1,7 @@
 """Portable, script-free reports with complete inputs and data provenance."""
 
 import json
+from copy import deepcopy
 from html import escape
 
 from .decay import snapshot
@@ -32,22 +33,20 @@ def _portable(value):
 def build_document(config: dict, *, samples: int, seed: int) -> dict:
     scenario = Scenario.from_dict(config)
     source = snapshot()
-    return _portable(
-        {
-            "model": {
-                "educational_only": True,
-                "disclaimer": DISCLAIMER,
-                "assumptions": ASSUMPTIONS,
-                "solver": "Bateman matrix exponential, 50 decimal digits",
-            },
-            "data_provenance": {
-                key: source[key] for key in ("source", "retrieved_utc", "source_sha256")
-            },
-            "scenario": config,
-            "result": evaluate(scenario),
-            "monte_carlo": monte_carlo(scenario, samples=samples, seed=seed),
-        }
-    )
+    return {
+        "model": {
+            "educational_only": True,
+            "disclaimer": DISCLAIMER,
+            "assumptions": ASSUMPTIONS,
+            "solver": "Bateman matrix exponential, 50 decimal digits",
+        },
+        "data_provenance": {
+            key: source[key] for key in ("source", "retrieved_utc", "source_sha256")
+        },
+        "scenario": deepcopy(config),
+        "result": _portable(evaluate(scenario)),
+        "monte_carlo": _portable(monte_carlo(scenario, samples=samples, seed=seed)),
+    }
 
 
 def _summary(document):

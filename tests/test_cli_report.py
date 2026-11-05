@@ -155,3 +155,26 @@ def test_cli_does_not_overwrite_scenario_or_conflicting_outputs(tmp_path):
     result = run_cli("run", config, "--json", tmp_path / "x", "--html", tmp_path / "x")
     assert result.returncode == 2
     assert not (tmp_path / "x").exists()
+
+
+@pytest.mark.parametrize("text", ["1 (s", "1 / 0 s"])
+def test_cli_handles_malformed_quantity_expressions_without_traceback(tmp_path, text):
+    source = json.loads((ROOT / "examples/f18.json").read_text())
+    source["steps"][0]["mean_duration"] = text
+    config = tmp_path / "input.json"
+    config.write_text(json.dumps(source))
+    result = run_cli("run", config)
+    assert result.returncode == 2
+    assert "Invalid quantity" in result.stderr
+    assert "Traceback" not in result.stderr
+
+
+def test_report_keeps_exact_supplied_inputs_for_rerunning():
+    from batch_timing.report import build_document
+
+    source = json.loads((ROOT / "examples/f18.json").read_text())
+    source["steps"][0]["retention"] = 0.9512345678912345
+    document = build_document(source, samples=100, seed=23)
+    assert document["scenario"] == source
+    again = build_document(document["scenario"], samples=100, seed=23)
+    assert again == document

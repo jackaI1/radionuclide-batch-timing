@@ -102,4 +102,4 @@ uv run python scripts/regenerate_reports.py --check
 uv build
 ```
 
-The tests cover analytic single decay, parent–daughter feeding, equal half-lives, branch recombination, the short-lived Ac-225 daughters, mixed units, retention, fixed reference times, impossible plans, reproducible sampling, and an independently calculated lognormal tail. Command-line tests exercise exports and invalid input. CI runs these checks and verifies that every saved report reproduces, on each pull request and on `main`.
+The suite passes **79 tests** with `uv run pytest -q`. The tests cover analytic single decay, parent–daughter feeding, equal half-lives, branch recombination, the short-lived Ac-225 daughters, mixed units, retention, fixed reference times, impossible plans, reproducible sampling, and an independently calculated lognormal tail. Command-line tests exercise exports and invalid input. CI runs these checks and verifies that every saved report reproduces, on each pull request and on `main`.

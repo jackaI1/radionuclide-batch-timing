@@ -7,10 +7,10 @@ name = "radionuclide-batch-timing"
 version = "0.1.0"
 description = "Educational radioactive decay and batch deadline simulator"
 requires-python = ">=3.11"
-dependencies = ["numpy>=2.0,<3", "scipy>=1.14,<2", "pint>=0.24,<1", "mpmath>=1.3,<2"]
+dependencies = ["numpy>=2.0,<3", "pint>=0.24,<1", "mpmath>=1.3,<2"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "scipy>=1.14,<2"]
 
 [project.scripts]
 radionuclide-batch = "batch_timing.cli:main"

@@ -1,6 +1,7 @@
 """All physical boundaries require quantities; internal time is seconds, activity Bq."""
 
 import math
+from tokenize import TokenError
 
 import pint
 
@@ -13,7 +14,7 @@ def quantity(text: str) -> Quantity:
         raise TypeError('Quantity must be a string with units, for example "30 min"')
     try:
         result = ureg.Quantity(text)
-    except (pint.PintError, TypeError) as exc:
+    except (pint.PintError, TypeError, ValueError, SyntaxError, TokenError, ArithmeticError) as exc:
         raise ValueError(f"Invalid quantity: {text!r}") from exc
     return result
 

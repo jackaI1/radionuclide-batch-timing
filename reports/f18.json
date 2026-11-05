@@ -1,0 +1,131 @@
+{
+  "model": {
+    "educational_only": true,
+    "disclaimer": "Educational model only, not for dose or production decisions.",
+    "assumptions": "Activity is referenced to a fixed clock time. Moving the process start does not reset decay. The target is the selected parent activity, not total daughter activity. A trial misses if it finishes after calibration or its parent activity is below target. Late trials are assessed at completion; other trials are assessed at planned calibration. Step times are independent lognormal samples with the supplied means and standard deviations. Each retention fraction removes the same fraction of every nuclide at the step end. Example timings, retentions and activities are invented study inputs, not measured process data. Only public decay data are used. Half-life, retention and measurement uncertainties are not sampled.",
+    "solver": "Bateman matrix exponential, 50 decimal digits"
+  },
+  "data_provenance": {
+    "source": "https://www.nndc.bnl.gov/nudat3/data/output.json",
+    "retrieved_utc": "2026-11-05T06:33:11.415702+00:00",
+    "source_sha256": "63464fb0ae7b52fc7a24a57bc8f305e9e3e141e71790f8a3175c5edb5b04ad0f"
+  },
+  "scenario": {
+    "title": "F-18 timing margin",
+    "parent": "F-18",
+    "reference_time": "2026-01-15T08:00:00Z",
+    "start_time": "2026-01-15T08:30:00Z",
+    "calibration_time": "2026-01-15T10:00:00Z",
+    "initial_activities": {
+      "F-18": "1000 MBq"
+    },
+    "target_activity": "430 MBq",
+    "steps": [
+      {
+        "name": "Preparation",
+        "mean_duration": "35 min",
+        "std_duration": "8 min",
+        "retention": 0.95
+      },
+      {
+        "name": "Transfer",
+        "mean_duration": "20 min",
+        "std_duration": "5 min",
+        "retention": 0.98
+      },
+      {
+        "name": "Quality check",
+        "mean_duration": "25 min",
+        "std_duration": "7 min",
+        "retention": 0.99
+      }
+    ]
+  },
+  "result": {
+    "title": "F-18 timing margin",
+    "parent": "F-18",
+    "reference_time": "2026-01-15T08:00:00+00:00",
+    "start_time": "2026-01-15T08:30:00+00:00",
+    "planned_calibration_time": "2026-01-15T10:00:00+00:00",
+    "completion_time": "2026-01-15T09:50:00+00:00",
+    "assessment_time": "2026-01-15T10:00:00+00:00",
+    "latest_start": "2026-01-15T08:40:00+00:00",
+    "schedule_possible_from_reference": true,
+    "activity_expiry_time": "2026-01-15T10:00:42.081471+00:00",
+    "nominal_duration_minutes": 80.0,
+    "deadline_slack_minutes": 10.0,
+    "target_activity_mbq": 430.0,
+    "planned_calibration_activity_mbq": 431.9092145,
+    "assessment_activity_mbq": 431.9092145,
+    "activity_target_met": true,
+    "deadline_met": true,
+    "feasible": true,
+    "timeline": [
+      {
+        "step": "Activity reference",
+        "time": "2026-01-15T08:00:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "F-18": 1000.0
+        }
+      },
+      {
+        "step": "Process start",
+        "time": "2026-01-15T08:30:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "F-18": 827.3740558
+        }
+      },
+      {
+        "step": "Preparation",
+        "time": "2026-01-15T09:05:00+00:00",
+        "retention": 0.95,
+        "activities_mbq": {
+          "F-18": 630.1022814
+        }
+      },
+      {
+        "step": "Transfer",
+        "time": "2026-01-15T09:25:00+00:00",
+        "retention": 0.98,
+        "activities_mbq": {
+          "F-18": 544.2165273
+        }
+      },
+      {
+        "step": "Quality check",
+        "time": "2026-01-15T09:50:00+00:00",
+        "retention": 0.99,
+        "activities_mbq": {
+          "F-18": 460.0713296
+        }
+      },
+      {
+        "step": "Activity assessment",
+        "time": "2026-01-15T10:00:00+00:00",
+        "retention": 1.0,
+        "activities_mbq": {
+          "F-18": 431.9092145
+        }
+      }
+    ]
+  },
+  "monte_carlo": {
+    "samples": 20000,
+    "seed": 2026,
+    "distribution": "independent lognormal step durations",
+    "misses": 3771,
+    "probability_miss": 0.18855,
+    "probability_deadline_miss": 0.18855,
+    "probability_activity_shortfall": 0.1756,
+    "wilson_95_interval": [
+      0.1831890272,
+      0.1940305921
+    ],
+    "total_duration_p50_minutes": 79.14077889,
+    "total_duration_p95_minutes": 100.6929685,
+    "latest_start_for_p95_duration": "2026-01-15T08:19:18.421892+00:00",
+    "assessment_activity_p05_mbq": 403.7000186
+  }
+}

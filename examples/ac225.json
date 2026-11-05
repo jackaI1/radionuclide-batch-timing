@@ -1,0 +1,14 @@
+{
+  "title": "Ac-225 daughter ingrowth after an ideal separation",
+  "parent": "Ac-225",
+  "reference_time": "2026-01-15T08:00:00Z",
+  "start_time": "2026-01-15T08:00:00Z",
+  "calibration_time": "2026-01-15T12:00:00Z",
+  "initial_activities": {"Ac-225": "10 MBq"},
+  "target_activity": "9 MBq",
+  "steps": [
+    {"name": "Preparation", "mean_duration": "30 min", "std_duration": "5 min", "retention": 0.98},
+    {"name": "Hold for daughter ingrowth", "mean_duration": "120 min", "std_duration": "20 min", "retention": 1},
+    {"name": "Quality check", "mean_duration": "30 min", "std_duration": "10 min", "retention": 0.99}
+  ]
+}

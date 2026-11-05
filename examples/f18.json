@@ -1,0 +1,14 @@
+{
+  "title": "F-18 timing margin",
+  "parent": "F-18",
+  "reference_time": "2026-01-15T08:00:00Z",
+  "start_time": "2026-01-15T08:30:00Z",
+  "calibration_time": "2026-01-15T10:00:00Z",
+  "initial_activities": {"F-18": "1000 MBq"},
+  "target_activity": "430 MBq",
+  "steps": [
+    {"name": "Preparation", "mean_duration": "35 min", "std_duration": "8 min", "retention": 0.95},
+    {"name": "Transfer", "mean_duration": "20 min", "std_duration": "5 min", "retention": 0.98},
+    {"name": "Quality check", "mean_duration": "25 min", "std_duration": "7 min", "retention": 0.99}
+  ]
+}

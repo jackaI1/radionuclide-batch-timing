@@ -1,20 +1,24 @@
-# Radionuclide batch timing
+I merged this into my existing [lab-assay-lims project](https://github.com/jackaI1/lab-assay-lims/tree/main/projects/radionuclide-batch-timing). The current code is in `projects/radionuclide-batch-timing/` there. I kept the code here so older links still work.
 
-I built a radioactive batch timing simulator because I wanted to see how much activity is left after preparation and waiting, and whether a plan still works when a step runs late.
+The move keeps the original layout, including `tests/test_cli_report.py`, `tests/test_schedule.py`, `tests/test_decay.py`, `scripts/regenerate_reports.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-Activity means the rate of radioactive decay. A batch keeps losing activity while it waits, moves, and gets checked. I enter its starting activity, the time that activity refers to, a list of steps, and the activity I want at calibration, the planned check time. The simulator shows what remains after each step, the latest start that fits the deadline, and how often variable step times would miss the plan. It also follows the radioactive daughters produced as Ac-225 decays.
+The 3 test source files moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
 
-**This is an educational model, not for dose or production decisions.** The example schedules and retention fractions are made-up study inputs. They are not measurements or operating instructions.
+Other specific omissions: reports/ (generated output).
 
-[Read the F-18 study without installing anything](reports/f18.md), or [see Ac-225 and its daughters](reports/ac225.md). The [F-18 HTML report](reports/f18.html) and [Ac-225 HTML report](reports/ac225.html) can be downloaded and opened in a browser offline. Each includes the inputs, step activities, timing risk, assumptions, and decay-data provenance.
+Omitted workflows: `radionuclide-batch-timing-ci.yml`: The relocated workflow failed in GitHub Actions and was removed to keep the hub checks independent. Local test sources remain available.
+
+---
+
+# radionuclide-batch-timing
+
+I built a radioactive batch timing simulator to learn how the underlying idea works. This is a learning project.
 
 ## Run my example
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/), which manages Python and dependencies, then run:
 
 ```sh
-git clone https://github.com/jackaI1/radionuclide-batch-timing.git
-cd radionuclide-batch-timing
 uv sync --locked --extra dev
 uv run radionuclide-batch run examples/f18.json \
   --samples 20000 --seed 2026 \
@@ -38,14 +42,6 @@ Copy [examples/f18.json](examples/f18.json) and edit it. [examples/ac225.json](e
 - Use strings with units, such as `"1000 MBq"`, `"1 GBq"`, `"35 min"`, or `"2 h"`. Bare numbers and incompatible units are rejected at the physical input boundaries. Clock times need a timezone.
 
 For example, replace the parent and initial-activity key in a copy with `Ga-68`, then run the same command with that file path. The supported parents all use the same scheduling and reporting code. The full [input and modelling guide](docs/model.md) explains the fields and limitations.
-
-## What “latest start” means
-
-I keep the source's activity reference time fixed. Starting work later does not give the source its original activity back.
-
-The latest nominal start is calibration time minus the total mean process duration. I separately check whether the parent activity survives until calibration after the specified losses. If the target is already impossible, the report says so even when the steps fit the clock. `activity_expiry_time` gives the last clock time the retained parent could meet the target; it is not a process start recommendation.
-
-For a late batch, activity is assessed at completion, since the steps were not finished at the planned calibration. A Monte Carlo trial, a randomly sampled schedule, counts as a miss if it finishes late **or** lacks the target activity. I report those risks separately as well as together. The sampled start allowance based on a longer-duration percentile addresses deadline risk only; it cannot fix an activity shortfall.
 
 ## Where I got the decay data
 
@@ -86,20 +82,14 @@ I convert activity into atom populations, propagate those populations through Ba
 
 For the timing study I sample positive, independent lognormal step durations using the supplied mean and standard deviation. I use the parent’s analytic exponential decay for each trial, since no tracked daughter feeds back into a selectable parent. Daughter inventories in the nominal timeline use the full chain solver. The reported interval describes random sampling error; it does not cover uncertainty in half-lives, activity measurements, yields, or the distribution choice. I have not modelled dose, chemistry, equipment, staffing, biological clearance, or daughter recoil and escape.
 
-## Code and checks
+## Tests and limits
 
-- `src/batch_timing/decay.py`: decay networks and Bateman propagation.
-- `src/batch_timing/schedule.py`: clock planning, losses, and Monte Carlo timing.
-- `src/batch_timing/units.py`: physical quantity validation.
-- `src/batch_timing/report.py`: saved HTML, Markdown, and structured results.
-- `examples/` and `reports/`: reproducible study inputs and outputs.
+There are 3 test source files in this copy. That source count does not establish an execution result. This is a source snapshot, and running it on a new machine may need environment-specific setup.
 
-```sh
-uv run pytest -q
-uv run ruff check .
-uv run ruff format --check .
-uv run python scripts/regenerate_reports.py --check
-uv build
-```
 
-The suite passes **79 tests** with `uv run pytest -q`. The tests cover analytic single decay, parent–daughter feeding, equal half-lives, branch recombination, the short-lived Ac-225 daughters, mixed units, retention, fixed reference times, impossible plans, reproducible sampling, and an independently calculated lognormal tail. Command-line tests exercise exports and invalid input. CI runs these checks and verifies that every saved report reproduces, on each pull request and on `main`.
+
+Generated output omitted from this copy: reports/ (generated output). Regenerate it with the project scripts.
+
+The relocated workflow failed in GitHub Actions and was removed to keep the hub checks independent. Local test sources remain available.
+
+No project-specific GitHub Actions workflow was retained. The local test sources remain in this folder.
